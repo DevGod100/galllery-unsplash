@@ -1,36 +1,180 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+NextJS Image Gallery using MongoDB(mongoose) + Nextjs Server Actions + Pure CSS + Next-Auth + Cloudinary
 
-## Getting Started
+I. Main functions.
 
-First, run the development server:
+SignIn with OAuth ( Google )
+Update Profile
+Middleware to secure certain pages
+Upload multiple photos
+Get all public photos
+Paginate by \_id and updatedAt
+Search (photos + users)
+Favorite photo
+Follow user
+Get all followings and followes by user
+Get all public, private, favorite photos by user
+Show modal photo by \_id
+Download image
+II. Implementation Guide.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Setup
+npx create-next-app@latest
+npm i mongoose next-auth cloudinary react-toastify
+next.config.js
+experimental: {
+serverActions: true
+},
+images: {
+domains: ['lh3.googleusercontent.com', 'res.cloudinary.com'],
+}
+layout.js (font Faustina, metadata, , react-toastify, google icons)
+globals.css
+Public Images
+Setup Database
+.env => MONGODB_URI
+utils => database.js
+models => userModel + photoModel
+Next Auth
+.env => NEXTAUTH_URL, NEXTAUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+openssl rand -base64 32
+provider => AuthProvider.js
+Nav component => Login, Logout Button
+layout.js => AuthProvider, Nav
+api/auth/[...nextauth]/route.js
+Google Login
+signInWithOAuth
+getUserByEmail
+utils => getServerUser.js
+middleware basic (search, upload, profile)
+NavBar Component
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+SearchForm Component
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Header Component
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Upload Page
 
-## Learn More
+Upload Form
 
-To learn more about Next.js, take a look at the following resources:
+handleInputFiles
+validFiles
+handleDrop
+Optimization with React Memo
+Upload Card
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+handleChangeTitle
+validate
+handleInputTags
+handleRemoveTag
+handleChangePublic
+handleRemoveFile
+Optimization with React Memo
+handleUpload
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+count
+handleUpload
+uploadPhotos action
+uploadPhotosToCloudinary
+dynamicBlurDataURL
+slugify
+Loading Component
 
-## Deploy on Vercel
+Home Page
+Get all public photos ( getPhotos )
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+generatePhotosMatch
+generatePhotosPipeline
+Error component
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Gallery component
+
+PhotoCard Component
+
+Optimization with React Memo
+
+Download Image
+
+Infinite Scrolling Pagination
+
+next_cursor
+LoadMore
+generateMatch
+generatePipeline
+hooks => useInView()
+Favorite Photo
+handleFavoritePhoto
+favoritePhoto Actions
+Profile Info
+GetUserById
+formatNumber
+Profile Edit
+Edit Profile Modal
+handleInputFiles
+handleDrop
+handleUpdateUser
+updateUser actions
+uploadToCloudinary
+destroyFromCloudinary
+Profile Follow
+followUser
+getUsers
+generateUsersMatch
+generateUsersPipeline
+ListOfUsers Component
+UserCard Component
+handleFollow
+Optimization with React Memo
+Profile Menu
+getPhotosCount (public, private, favorite)
+generatePhotosMatch
+generatePhotosCountPipeline
+Profile Gallery
+getPhotos
+middleware (private, favorite)
+Fix Error
+Caching
+LoadMore when "click to go back" on browser
+Edit + Delete Photo
+updatePhoto Actions
+deletePhoto Actions
+Search Page
+Setup Search Mongodb Atlas
+Search Menu
+generateMatch (users, photos)
+
+generatePipeline (users, photos)
+
+getPhotosCount
+
+getUsersCount
+
+Search Gallery + Search Users
+
+Photo Detail Page
+
+Photo Component
+handleDownloadImage
+handleFavoritePhoto
+Share Photo ( photo page )
+getPhotoById
+generateMetadata
+Next, Prev Photo
+
+Deploy Vercel
+
+npm i sharp
+Run build => Test
+Upload to Github
+Deploy to Vercel
+Change domain in dynamicBlurData
+Setup .env => NEXTAUTH_URL
+Setup Google Cloud Console
+..../api/auth/callback/google
+📚 Materials/References:
+
+Server Actions: https://youtu.be/RZpQ4MAHf1Y?si=84rLGD1CwGt24s23
+NextAuth: https://youtu.be/fcySGWgRuu8?si=9MRVNYVnRAx5ujfj
+Upload Photos: https://youtu.be/JggXd2n4qH4?si=qfyYMrGaLK6okqi1
+SEO: https://youtu.be/xbsSuadHtZo?si=Ms7MCOymfUbHn8J-
+Image Optimization: https://youtu.be/noR4Ben87Sw?si=cQcxqqoy4WdhfJk_
+Infinite Scrolling Pagination: https://youtu.be/L94BfDhxbF8?si=5pJFya2KbrQifHI-
