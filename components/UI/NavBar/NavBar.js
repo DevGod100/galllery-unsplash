@@ -37,11 +37,10 @@ const NavBar = ({user}) => {
             </Link>
 
             <Link href={`/profile/${user?._id}`} className='avatar'>
-            <Image src={user?.avatar} alt={user?.name}
+            <Image src={user?.image} alt={user?.name}
             width={40} height={40} sizes='25vw'
             />
             </Link>
-            <button onClick={signOut}>{user.name} Logout</button>
             </>
           }
         </div>
