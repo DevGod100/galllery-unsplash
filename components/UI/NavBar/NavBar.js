@@ -1,4 +1,5 @@
 'use client'
+import SearchForm from '@/components/forms/SearchForm/SearchForm'
 import { signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,7 +13,7 @@ const NavBar = ({user}) => {
           <b>N</b><span>ovem</span>
         </Link>
         <div className='nav_search'>
-
+           <SearchForm />
         </div>
 
         <div className='nav_menu'>
