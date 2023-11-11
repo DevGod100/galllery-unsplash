@@ -35,3 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /.env
+/components/Cards/UploadCard/UploadCard.js
