@@ -8,7 +8,8 @@ const Upload = () => {
   return (
     <div className="container">
       <UploadForm setFiles={setFiles}/>
-      <div>
+
+      <div className="masonry">
         {
           files.map((file, index) => (
             <UploadCard 
