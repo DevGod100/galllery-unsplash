@@ -42,6 +42,7 @@ const NavBar = ({user}) => {
             width={40} height={40} sizes='25vw'
             />
             </Link>
+            <button onClick={signOut}>{user.name} Logout</button>
             </>
           }
         </div>
@@ -58,7 +59,9 @@ export default NavBar
 {/* <div style={{display: 'flex', gap: 50}}>
 {
   user
-  ? <button onClick={signOut}>{user.name} Logout</button>
-  :  <button onClick={() => signIn('google')}>Login</button>
+  ? 
+  <button onClick={signOut}>{user.name} Logout</button>
+  :  
+  <button onClick={() => signIn('google')}>Login</button>
 }
 </div> */}
