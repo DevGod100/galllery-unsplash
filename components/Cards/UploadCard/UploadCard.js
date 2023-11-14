@@ -4,7 +4,7 @@ import React from "react";
 import "./UploadCard.css";
 import Image from "next/image";
 
-const UploadCard = ({ file, setFiles, index }) => {
+const UploadCard = React.memo(({ file, setFiles, index }) => {
   const validate = ({ title, tags }) => {
     const errors = {};
 
@@ -71,7 +71,7 @@ const UploadCard = ({ file, setFiles, index }) => {
     setFiles(files => files.filter((_, i) => i !== index ))
   }
 
-  console.log(upload-card);
+//   console.log('upload-card');
 
   return (
     <div className={`upload_card ${file?.status}`}>
@@ -89,7 +89,7 @@ const UploadCard = ({ file, setFiles, index }) => {
         </div>
       ) : (
         <div className="up_c_success_box">
-          <div className="up_c_s_group" title={`${file?.title?.length} / 100`}>
+          <div className="up_c_s_title" title={`${file?.title?.length} / 100`}>
             <input
               type="text"
               autoComplete="off"
@@ -123,6 +123,6 @@ const UploadCard = ({ file, setFiles, index }) => {
       </button>
     </div>
   );
-};
+});
 
 export default UploadCard;
