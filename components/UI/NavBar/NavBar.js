@@ -42,6 +42,8 @@ const NavBar = ({user}) => {
             width={40} height={40} sizes='25vw'
             />
             </Link>
+            {/* not working */}
+            <p>____|{user._id}|___</p> 
             <button onClick={signOut}>{user.name} Logout</button>
             </>
           }

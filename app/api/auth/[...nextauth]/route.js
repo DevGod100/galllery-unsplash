@@ -25,8 +25,7 @@ export const authOptions = {
             return token;
         },
         async({session, token}){
-            console.log({session, token});
-            session.user =  token.user;
+            session.user = token.user;
             return session;
         }
     }
@@ -45,7 +44,9 @@ async function signInWithOAuth({ profile }){
     const newUser = new UserModel({
         name: profile.name,
         email: profile.email,
-        avatar: profile.picture
+        avatar: profile.picture,
+        //added  chatGPT
+        public_id: profile._id,
     }) 
     await newUser.save();
 
