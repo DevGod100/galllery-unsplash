@@ -46,7 +46,7 @@ async function signInWithOAuth({ profile }){
         email: profile.email,
         avatar: profile.picture,
         //added  chatGPT
-        public_id: profile._id,
+        _id: profile.public_id,
     }) 
     await newUser.save();
 
@@ -54,12 +54,17 @@ async function signInWithOAuth({ profile }){
 }
 
 async function getUserByEmail({email}){
+    // console.log('Profile:', profile); // Log the profile object to check its structure
+
+    console.log("Searching for user with email:", email);
+
     const user = await UserModel.findOne({email})
     if(!user) throw new Error("email does not exist")
 
+    console.log('User exists:', user); 
     const newUser = {
         ...user._doc,
-        _id: user._id.toString(),
+        // _id: user._id.toString(),
         total_followers: user.followers.length,
         total_followings: user.followings.length,
         followers: [],

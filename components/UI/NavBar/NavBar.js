@@ -43,7 +43,8 @@ const NavBar = ({user}) => {
             />
             </Link>
             {/* not working */}
-            <p>____|{user._id}|___</p> 
+            {/* <p>____|{JSON.stringify(user)}|___</p>  */}
+
             <button onClick={signOut}>{user.name} Logout</button>
             </>
           }

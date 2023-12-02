@@ -25,7 +25,6 @@ header{
     position: absolute;
     z-index: 1;
 }
-
 .header_content > h1{
     font-size: 2rem;
     margin-bottom: 30px;
